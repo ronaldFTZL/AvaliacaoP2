@@ -6,27 +6,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biblioteca.models.Cliente;
+import com.biblioteca.repository.Clientes;
 
 @Controller
 public class ClienteController {
 	
 	@Autowired
 	
-	private Cliente cliente;
+	private Clientes clientes;
 	
-	@GetMapping("clientes")
+	@GetMapping("/clientes")
 	public ModelAndView listar() {
 		
-		ModelAndView modelAndView = new ModelAndView("Cliente");
+		ModelAndView modelAndView = new ModelAndView("clientes");
 
-		modelAndView.addObject("Livro" , livro.findAll());
+		modelAndView.addObject("cliente" , clientes.findAll());
 		
-		modelAndView.addAllObjects("livro" , new Livro());
-		
+		modelAndView.addObject("cliente", new Cliente());
 		
 		return modelAndView;
 		
 	}
-	
 
 }
