@@ -14,12 +14,12 @@ import com.biblioteca.repository.*;
 public class LivroController {
 
 	@Autowired
-	private Livro livro;
+	private  LivroRepository livros;
 
 	@PostMapping("/livros")
 	public String salvar(Livro livro) {
 
-		this.livro.save(livro);
+		this.livros.save(livro);
 
 		return "redirect:/index";
 	};
@@ -29,7 +29,7 @@ public class LivroController {
 
 		ModelAndView modelAndView = new ModelAndView("Livro");
 
-		modelAndView.addObject("livro", livro.findAll());
+		modelAndView.addObject("livro", livroRepository.findAll());
 
 		modelAndView.addObject("Livro", new Livro());
 
@@ -38,7 +38,7 @@ public class LivroController {
 	}
 
 	public String getLivro(Livro livro) {
-		this.livro.Find(livro.id);
+		this.livroRepository.Find();
 
 		return "redirect:/detalhes";
 	}
